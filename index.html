@@ -1,40 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>TextArea Dinamis</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 2px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+    <title>Proyek</title>
 </head>
 <body>
-    </table> 
-    <table border="1" width="100%">
+    <table id="data-table">
         <tr>
-            <td class="judul">Nama</td>
-            <td class="judul">Kelas</td>
-                <div id="textAreaContainer">
-                    <textarea id="textarea" placeholder="Halo dunia"></textarea>
-                    <button class="addButton">+</button>
-                </div>
-            </td>
+            <td>Nama</td>
+            <td><textarea placeholder="Masukkan Nama" id="nama" cols="30" rows="5"></textarea></td>
+            <td><button onclick="addRow()">+</button></td>
+            <td>Kelas</td>
+            <td><textarea placeholder="Masukkan Kelas" id="kelas" cols="30" rows="5"></textarea></td>
+        </tr>
+    </table>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-           var textarea = document.getElementById('textarea');
-           textarea.rows = 4;
-           textarea.cols = 50;
-    
-           var addButton = document.querySelector('.addButton');
-           var textAreaContainer = document.getElementById('textAreaContainer');
-    
-           addButton.addEventListener('click', function() {
-               
-               var newTextArea1 = document.createElement('textarea');
-               newTextArea1.rows = 4;
-               newTextArea1.cols = 50;
-               newTextArea1.placeholder = 'Masukkan teks di sini...';
-    
-               textAreaContainer.appendChild(newTextArea1);
-    
-               textAreaContainer.appendChild(addButton); // Menambahkan tombol + kembali ke bawah
-           });
-       });
-    </script>  
+        function addRow() {
+            var table = document.getElementById("data-table");
+            var row = table.insertRow(table.rows.length);
+            
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            
+            cell1.innerHTML = "Nama";
+            cell2.innerHTML = '<textarea placeholder="Masukkan Nama" cols="30" rows="5"></textarea>';
+            cell3.innerHTML = '<button onclick="moveRow(this)">+</button>';
+            cell4.innerHTML = "Kelas";
+            cell5.innerHTML = '<textarea placeholder="Masukkan Kelas" cols="30" rows="5"></textarea>';
+        }
+
+        function moveRow(button) {
+            var row = button.parentNode.parentNode;
+            var newRow = row.cloneNode(true);
+            row.parentNode.insertBefore(newRow, row.nextSibling);
+        }
+    </script>
 </body>
 </html>
