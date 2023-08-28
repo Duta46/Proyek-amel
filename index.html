@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TextArea Dinamis</title>
+</head>
+<body>
+    </table> 
+    <table border="1" width="100%">
+        <tr>
+            <td class="judul">Nama</td>
+            <td class="judul">Kelas</td>
+                <div id="textAreaContainer">
+                    <textarea id="textarea" placeholder="Halo dunia"></textarea>
+                    <button class="addButton">+</button>
+                </div>
+            </td>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+           var textarea = document.getElementById('textarea');
+           textarea.rows = 4;
+           textarea.cols = 50;
+    
+           var addButton = document.querySelector('.addButton');
+           var textAreaContainer = document.getElementById('textAreaContainer');
+    
+           addButton.addEventListener('click', function() {
+               
+               var newTextArea1 = document.createElement('textarea');
+               newTextArea1.rows = 4;
+               newTextArea1.cols = 50;
+               newTextArea1.placeholder = 'Masukkan teks di sini...';
+    
+               textAreaContainer.appendChild(newTextArea1);
+    
+               textAreaContainer.appendChild(addButton); // Menambahkan tombol + kembali ke bawah
+           });
+       });
+    </script>  
+</body>
+</html>
